@@ -1,6 +1,10 @@
-const { Router } = require("express");
-const route = require('express').Router;
+const express  = require("express");
+const route = express.Router();
 
-route.use('/' , require('v'))
+
+
+
+module.exports = route;
+
 
 
