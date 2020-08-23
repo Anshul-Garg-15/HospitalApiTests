@@ -4,7 +4,8 @@
   "description": "Hospital API in which doctor can register patients and create report and on the other hand patients can check their reports with testing",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha",
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
