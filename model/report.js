@@ -1,10 +1,18 @@
 const mongoose = require('mongoose');
 
 const reportSchema = mongoose.Schema({
-    doctorName:{
-        type:String,
-        required:true,
-    },
+    // doctorName:{
+    //     type:String,
+    //     required:true,
+    // },
+    doctor: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Doctor'
+  
+        }],
+    
+
     Status:{
         type:String,
         required:true
@@ -13,15 +21,14 @@ const reportSchema = mongoose.Schema({
         type:String,
         required:true
     },
-    //report will have the patient ID
-    patient: 
+    //report will have the patient ID and DoctorID
+    patient:[ 
         {
           type: mongoose.Schema.Types.ObjectId,
           ref: 'Patient'
   
         }
-      
-
+    ]
 },{
     timestamps:true
 });

@@ -21,9 +21,9 @@ passport.use(new passportJwtStrategy(option , function(jwtPayLoads , done){
         if(err){console.log("error in finding doctor",err); return;}
 
         if(doctor){
-            return (null , doctor);
+            return done(null , doctor);
         }else{
-            return (null,false);
+            return done(null,false);
         }
     });
 
@@ -31,28 +31,28 @@ passport.use(new passportJwtStrategy(option , function(jwtPayLoads , done){
 
 
 //check the user is authenticate
-passport.checkAuthentication = function(req , res , next){
-    //if the user is signed in then show the next page of the user means next request execute
-    if(req.isAuthenticated()){
-        return next();
-    }
+// passport.checkAuthentication = function(req , res , next){
+//     //if the user is signed in then show the next page of the user means next request execute
+//     if(req.isAuthenticated()){
+//         return next();
+//     }
   
-}
+// }
 
-//to send the user data to views if user is authenticated
-//middleware
-passport.setAuthenticatedUser = function(req , res , next,){
+// //to send the user data to views if user is authenticated
+// //middleware
+// passport.setAuthenticatedUser = function(req , res , next,){
     
-    if(req.isAuthenticated()){
+//     if(req.isAuthenticated()){
 
-        //req.user contains the user data from the session cookies and we send this data to local
-        res.locals.user = req.user;
-    }
+//         //req.user contains the user data from the session cookies and we send this data to local
+//         res.locals.user = req.user;
+//     }
     
 
-    next();
+//     next();
    
 
-}
+// }
 
 module.exports = passport;
