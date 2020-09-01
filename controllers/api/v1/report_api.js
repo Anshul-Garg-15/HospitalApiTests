@@ -4,37 +4,49 @@ const Doctor = require('../../../model/doctor');
 
 //for creating the patient reports
 module.exports.create_report = function(req,res){
+    
 
     try {
-    
-        let doctorID = req.user;
+  
+    let doctorID = req.user.id;
     let patientID = req.params.id;
 
-    Report.create({
-        doctorID:doctorID,
-        Status: req.body.Status,
-        Date:req.body.Date,
-        patientID:patientID
-    },function(err,report){
+    Patient.findById(patientID,function(err,patient){
+
         if(err){
-            console.log("Error in creating report",err);
+            console.log("Error in finding patient",err);
             return;
         }
-        patientID.report.push(report);
-        patientID.save();
-        return res.json(200, {
-            data:
-            {
-                report: report
-            },
-            message: "Patient report created"
+        Report.create({
+            Status: req.body.Status,
+            Date: req.body.Date,
+            doctorID: doctorID,
+            patient: patientID
+        },function(err,report){
+            if(err){
+                console.log("Error in creating report",err);
+                return;
+            }
+            patient.report.push(report);
+            patient.save();
+            return res.json(200, {
+                data:
+                {
+                    report: report
+                },
+                message: "Patient report created"
+            });
         });
-    });
+    
+    
 
+    })
 
+    
 
 
     } catch (err) {
+        console.log('eer',err);
         return res.json(500,{
             message: "Internal server error"
         })       
@@ -46,7 +58,7 @@ module.exports.create_report = function(req,res){
 module.exports.all_reports = function(req,res){
     try {
         let patientID = req.params.id
-        Report.find({patientID:patientID},function(err,report){
+        Report.find({patient:patientID},function(err,report){
             if(err){
                 console.log("Error in listing the reports",err);
                 return;
@@ -90,3 +102,5 @@ module.exports.status = function(req,res){
         
     }
 }
+
+//

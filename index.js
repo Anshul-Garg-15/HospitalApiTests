@@ -22,12 +22,14 @@ app.use(passport.session());
 
 app.use(passport.setAuthenticatedUser);
 
-app.use('/' , require('./routes'));
+app.use('/' , require('./routes/api/v1'));
 
-app.listen(port , function(err){
+const server = app.listen(port , function(err){
     if(err){
         console.log("Error in connection" , err);
         return;
     }
     console.log("Server is running on port" , port);
-})
+});
+
+module.exports = server;

@@ -1,5 +1,7 @@
 const Patient = require('../../../model/patient');
 const Doctor = require('../../../model/doctor');
+const passport = require('passport');
+const jwt = require('jsonwebtoken');
 
 
 module.exports.register = function(req,res){
@@ -36,7 +38,8 @@ module.exports.register = function(req,res){
                     });
                 });
             }else{
-                return res.json(230,{
+                return res.json(200,{
+                    patient:patient,
                     message: "Patient has already registered with this mobile number"
                 })
             }

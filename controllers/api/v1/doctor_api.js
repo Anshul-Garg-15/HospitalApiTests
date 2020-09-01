@@ -52,7 +52,7 @@ module.exports.login = async function(req,res)
             return res.json(200 , {
                 data: {
                     //this set the token and send it to the user
-                   token: jwt.sign(doctor.toJSON() , 'hospital' , {expiresIn: 200000000000})
+                   token: jwt.sign(doctor.toJSON() , 'hospital' , {expiresIn: 400000000000000})
 
                 },
                 message: "Doctor login Successfully"

@@ -1,12 +1,12 @@
 const express  = require("express");
-const route = express.Router();
+const router = express.Router();
 
-route.use('/doctors' , require('./doctors'));
-route.use('/patients', require('./patients'));
+router.use('/doctors' , require('./doctors'));
+router.use('/patients', require('./patients'));
 
 
 
-module.exports = route;
+module.exports = router;
 
 
 

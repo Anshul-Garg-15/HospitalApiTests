@@ -1,10 +1,10 @@
 const express = require('express');
-const route = express.Router();
+const router = express.Router();
 const doctorApi = require('../../../controllers/api/v1/doctor_api');
 
 //to register the doctor
-route.post('/register' , doctorApi.register);
+router.post('/register' , doctorApi.register);
 
 //to login the doctor 
-route.post('/login' , doctorApi.login);
-module.exports = route;
+router.post('/login' , doctorApi.login);
+module.exports = router;

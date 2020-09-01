@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 
 const patientSchema = mongoose.Schema({
    
-    phoneNumber : {
+    phoneNumber: {
         type:Number,
         required: true,
         unique:true
     },
-    patientName : {
+    patientName: {
         type: String,
         required: true
     },

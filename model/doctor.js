@@ -13,7 +13,7 @@ const doctorSchema = mongoose.Schema({
         unique: true
     },
 
-    patients: [{
+    patient: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Patient'
     }     
